@@ -1,0 +1,4 @@
+name: CodeToolsApi
+version: '${project.version}'
+main: me.codetoolsapi.codetoolsapi.CodeToolsApi
+api-version: '1.20'
