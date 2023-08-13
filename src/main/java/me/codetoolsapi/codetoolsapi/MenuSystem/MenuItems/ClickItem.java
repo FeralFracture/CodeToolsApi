@@ -13,7 +13,7 @@ public abstract class ClickItem extends ItemStack {
     public abstract ArrayList<String> getLore();
     protected abstract void setPersistentData(ItemMeta meta);
     public void setPersistentData(String key, String value) {
-        PersistentDataUtils.addPersistentStringData(item_meta, key, value);
+        PersistentDataUtils.addPersistentData(item_meta, key, value);
         this.setItemMeta(item_meta);
     }
 

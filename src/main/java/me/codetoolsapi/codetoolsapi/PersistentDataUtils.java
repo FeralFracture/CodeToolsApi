@@ -5,10 +5,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.util.ArrayList;
-
 public class PersistentDataUtils {
-    public static void addPersistentStringData(ItemMeta meta, String key, Object value) {
+    public static void addPersistentData(ItemMeta meta, String key, Object value) {
         if (value instanceof String) {
             meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.STRING, (String) value);
         } else if (value instanceof Boolean) {
@@ -38,7 +36,7 @@ public class PersistentDataUtils {
         }
     }
 
-    public static Object getPersistentStringData(ItemMeta meta, String key) {
+    public static Object getPersistentData(ItemMeta meta, String key) {
         if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.STRING) != null) {
             return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.STRING);
         } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BOOLEAN) != null) {
