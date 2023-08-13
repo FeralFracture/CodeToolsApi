@@ -16,6 +16,8 @@ public abstract class Menu implements InventoryHolder {
 
     public abstract String getMenuName();
 
+    public abstract boolean autoCancel();
+
     public abstract int getRows();
 
     public abstract void handleMenu(InventoryClickEvent e);
@@ -26,7 +28,9 @@ public abstract class Menu implements InventoryHolder {
 
     public void open() {
         inventory = Bukkit.createInventory(this, getRows() * 9, getMenuName());
-        this.setMenuItems();
+        if (autoCancel()) {
+            this.setMenuItems();
+        }
         if (fillerGlass()) {
             for (int i = 0; i < getRows() * 9; i++) {
                 if (inventory.getItem(i) == null) {

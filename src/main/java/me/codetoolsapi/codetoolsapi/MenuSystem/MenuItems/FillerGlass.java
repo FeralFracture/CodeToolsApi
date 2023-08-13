@@ -2,6 +2,7 @@ package me.codetoolsapi.codetoolsapi.MenuSystem.MenuItems;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class FillerGlass extends ClickItem {
     }
 
     @Override
-    public void setPersistentData(ItemMeta meta) {
+    public void setPersistentData(PersistentDataContainer data) {
 
     }
 }

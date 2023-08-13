@@ -6,65 +6,102 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 public class PersistentDataUtils {
-    public static void addPersistentData(ItemMeta meta, String key, Object value) {
+    public static void addPersistentData(PersistentDataContainer data, String key, Object value) {
+        NamespacedKey k = new NamespacedKey(CodeToolsApi.getPlugin(), key);
         if (value instanceof String) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.STRING, (String) value);
+            data.set(k, PersistentDataType.STRING, (String) value);
         } else if (value instanceof Boolean) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BOOLEAN, (Boolean) value);
+            data.set(k, PersistentDataType.BOOLEAN, (Boolean) value);
         } else if (value instanceof Double) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.DOUBLE, (Double) value);
+            data.set(k, PersistentDataType.DOUBLE, (Double) value);
         } else if (value instanceof Float) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.FLOAT, (Float) value);
+            data.set(k, PersistentDataType.FLOAT, (Float) value);
         } else if (value instanceof Integer) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.INTEGER, (Integer) value);
+            data.set(k, PersistentDataType.INTEGER, (Integer) value);
         } else if (value instanceof Long) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.LONG, (Long) value);
+            data.set(k, PersistentDataType.LONG, (Long) value);
         } else if (value instanceof Short) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.SHORT, (Short) value);
+            data.set(k, PersistentDataType.SHORT, (Short) value);
         } else if (value instanceof int[]) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.INTEGER_ARRAY, (int[]) value);
+            data.set(k, PersistentDataType.INTEGER_ARRAY, (int[]) value);
         } else if (value instanceof long[]) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.LONG_ARRAY, (long[]) value);
+            data.set(k, PersistentDataType.LONG_ARRAY, (long[]) value);
         } else if (value instanceof Byte) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BYTE, (byte) value);
+            data.set(k, PersistentDataType.BYTE, (byte) value);
         } else if (value instanceof byte[]) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BYTE_ARRAY, (byte[]) value);
+            data.set(k, PersistentDataType.BYTE_ARRAY, (byte[]) value);
         } else if (value instanceof PersistentDataContainer) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.TAG_CONTAINER, (PersistentDataContainer) value);
+            data.set(k, PersistentDataType.TAG_CONTAINER, (PersistentDataContainer) value);
         } else if (value instanceof PersistentDataContainer[]) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.TAG_CONTAINER_ARRAY, (PersistentDataContainer[]) value);
+            data.set(k, PersistentDataType.TAG_CONTAINER_ARRAY, (PersistentDataContainer[]) value);
         }
     }
 
-    public static Object getPersistentData(ItemMeta meta, String key) {
-        if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.STRING) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.STRING);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BOOLEAN) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BOOLEAN);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.DOUBLE) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.DOUBLE);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.FLOAT) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.FLOAT);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.INTEGER) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.INTEGER);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.LONG) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.LONG);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.SHORT) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.SHORT);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.INTEGER_ARRAY) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.INTEGER_ARRAY);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.LONG_ARRAY) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.LONG_ARRAY);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BYTE) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BYTE);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BYTE_ARRAY) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.BYTE_ARRAY);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.TAG_CONTAINER) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.TAG_CONTAINER);
-        } else if (meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.TAG_CONTAINER_ARRAY) != null) {
-            return meta.getPersistentDataContainer().get(new NamespacedKey(CodeToolsApi.getPlugin(), key), PersistentDataType.TAG_CONTAINER_ARRAY);
+    public static Object getPersistentData(PersistentDataContainer data, String key) {
+        NamespacedKey k = new NamespacedKey(CodeToolsApi.getPlugin(), key);
+        if (data.has(k, PersistentDataType.STRING)) {
+            return data.get(k, PersistentDataType.STRING);
+        } else if (data.has(k, PersistentDataType.BOOLEAN)) {
+            return data.get(k, PersistentDataType.BOOLEAN);
+        } else if (data.has(k, PersistentDataType.DOUBLE)) {
+            return data.get(k, PersistentDataType.DOUBLE);
+        } else if (data.has(k, PersistentDataType.FLOAT)) {
+            return data.get(k, PersistentDataType.FLOAT);
+        } else if (data.has(k, PersistentDataType.INTEGER)) {
+            return data.get(k, PersistentDataType.INTEGER);
+        } else if (data.has(k, PersistentDataType.LONG)) {
+            return data.get(k, PersistentDataType.LONG);
+        } else if (data.has(k, PersistentDataType.SHORT)) {
+            return data.get(k, PersistentDataType.SHORT);
+        } else if (data.has(k, PersistentDataType.INTEGER_ARRAY)) {
+            return data.get(k, PersistentDataType.INTEGER_ARRAY);
+        } else if (data.has(k, PersistentDataType.LONG_ARRAY)) {
+            return data.get(k, PersistentDataType.LONG_ARRAY);
+        } else if (data.has(k, PersistentDataType.BYTE)) {
+            return data.get(k, PersistentDataType.BYTE);
+        } else if (data.has(k, PersistentDataType.BYTE_ARRAY)) {
+            return data.get(k, PersistentDataType.BYTE_ARRAY);
+        } else if (data.has(k, PersistentDataType.TAG_CONTAINER)) {
+            return data.get(k, PersistentDataType.TAG_CONTAINER);
+        } else if (data.has(k, PersistentDataType.TAG_CONTAINER_ARRAY)) {
+            return data.get(k, PersistentDataType.TAG_CONTAINER_ARRAY);
         } else {
             return null;
         }
+    }
+
+    public static void removePersistentData(PersistentDataContainer data, String key) {
+        NamespacedKey k = new NamespacedKey(CodeToolsApi.getPlugin(), key);
+        if (data.has(k, PersistentDataType.STRING) ||
+                data.has(k, PersistentDataType.BOOLEAN) ||
+                data.has(k, PersistentDataType.DOUBLE) ||
+                data.has(k, PersistentDataType.FLOAT) ||
+                data.has(k, PersistentDataType.INTEGER) ||
+                data.has(k, PersistentDataType.LONG) ||
+                data.has(k, PersistentDataType.SHORT) ||
+                data.has(k, PersistentDataType.INTEGER_ARRAY) ||
+                data.has(k, PersistentDataType.LONG_ARRAY) ||
+                data.has(k, PersistentDataType.BYTE) ||
+                data.has(k, PersistentDataType.BYTE_ARRAY) ||
+                data.has(k, PersistentDataType.TAG_CONTAINER) ||
+                data.has(k, PersistentDataType.TAG_CONTAINER_ARRAY)) {
+            data.remove(k);
+        }
+    }
+    public static boolean hasPersistentData(PersistentDataContainer data, String key) {
+        NamespacedKey k = new NamespacedKey(CodeToolsApi.getPlugin(), key);
+        return data.has(k, PersistentDataType.STRING) ||
+                data.has(k, PersistentDataType.BOOLEAN) ||
+                data.has(k, PersistentDataType.DOUBLE) ||
+                data.has(k, PersistentDataType.FLOAT) ||
+                data.has(k, PersistentDataType.INTEGER) ||
+                data.has(k, PersistentDataType.LONG) ||
+                data.has(k, PersistentDataType.SHORT) ||
+                data.has(k, PersistentDataType.INTEGER_ARRAY) ||
+                data.has(k, PersistentDataType.LONG_ARRAY) ||
+                data.has(k, PersistentDataType.BYTE) ||
+                data.has(k, PersistentDataType.BYTE_ARRAY) ||
+                data.has(k, PersistentDataType.TAG_CONTAINER) ||
+                data.has(k, PersistentDataType.TAG_CONTAINER_ARRAY);
     }
 }
