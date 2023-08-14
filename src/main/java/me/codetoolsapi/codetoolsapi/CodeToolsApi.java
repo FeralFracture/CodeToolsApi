@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public final class CodeToolsApi extends JavaPlugin {
-    private static final HashMap<UUID, PlayerMenuUtility> playerMenuUtilityMap = new HashMap<>();
 
     public static JavaPlugin getPlugin() {
         return plugin;
@@ -21,14 +20,4 @@ public final class CodeToolsApi extends JavaPlugin {
         plugin = this;
 
     }
-    public static PlayerMenuUtility getPlayerMenuUtility(Player p) {
-        if (playerMenuUtilityMap.containsKey(p.getUniqueId())) {
-            return playerMenuUtilityMap.get(p.getUniqueId());
-        } else {
-            PlayerMenuUtility temp = new PlayerMenuUtility(p);
-            playerMenuUtilityMap.put(p.getUniqueId(), temp);
-            return temp;
-        }
-    }
-
 }
