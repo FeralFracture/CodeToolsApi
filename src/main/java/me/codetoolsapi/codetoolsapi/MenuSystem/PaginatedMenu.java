@@ -18,7 +18,7 @@ public abstract class PaginatedMenu extends Menu {
         inventory.setItem(48, new PageButton(ChatColor.GREEN + "Left"));
         inventory.setItem(49, new CancelOrClose(ChatColor.DARK_RED + "Close"));
         inventory.setItem(50, new PageButton(ChatColor.GREEN + "Right"));
-        for (int i = 44; i < 54; i++) {
+        for (int i = 45; i < 54; i++) {
             if (inventory.getItem(i) == null) {
                 inventory.setItem(i, new FillerGlass());
             }

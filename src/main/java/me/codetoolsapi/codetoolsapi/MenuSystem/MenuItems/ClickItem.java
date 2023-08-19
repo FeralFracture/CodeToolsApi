@@ -17,7 +17,13 @@ public abstract class ClickItem extends ItemStack {
         PersistentDataUtils.addPersistentData(item_meta.getPersistentDataContainer(), key, value);
         this.setItemMeta(item_meta);
     }
-
+public ClickItem(Material material, String name) {
+    super(material);
+    item_meta.setLore(getLore());
+    item_meta.setDisplayName(name);
+    setPersistentData(item_meta.getPersistentDataContainer());
+    this.setItemMeta(item_meta);
+}
     public ClickItem(Material material) {
         super(material);
         item_meta.setLore(getLore());

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class CancelOrClose extends ClickItem{
     private String name = ChatColor.RED + "Cancel";
     public CancelOrClose(String name) {
-        super(Material.BARRIER);
+        super(Material.BARRIER, name);
         this.name = name;
     }
     public CancelOrClose() {

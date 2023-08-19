@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class PageButton extends ClickItem{
 
-    private String name;
+    private String name = "Dark Oak Button";
     public PageButton(String name) {
-        super(Material.DARK_OAK_BUTTON);
+        super(Material.DARK_OAK_BUTTON, name);
         this.name = name;
     }
 
